@@ -1,161 +1,69 @@
-# MIRRORS
+# Mirrors V1.0.0
 
-```text
-███╗   ███╗██╗██████╗ ██████╗  ██████╗ ██████╗ ███████╗
-████╗ ████║██║██╔══██╗██╔══██╗██╔═══██╗██╔══██╗██╔════╝
-██╔████╔██║██║██████╔╝██████╔╝██║   ██║██████╔╝███████╗
-██║╚██╔╝██║██║██╔══██╗██╔══██╗██║   ██║██╔══██╗╚════██║
-██║ ╚═╝ ██║██║██║  ██║██║  ██║╚██████╔╝██║  ██║███████║
-╚═╝     ╚═╝╚═╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝
-```
+> 𝗠𝗶𝗿𝗿𝗼𝗿𝘀 — программа для загрузки медиа по ссылке.
 
-Кроссплатформенная консольная программа для скачивания видео, аудио и изображений по ссылке.
+![Made with love](https://img.shields.io/badge/made%20with-%E2%9D%A4-red.svg) ![GitHub stars](https://img.shields.io/github/stars/justiceDev1/Mirrors.svg?style=social)
+![Mirrors](https://i.postimg.cc/zXzH1M7K/Snimok-ekrana-2026-11-16-154010.png)
 
-**Версия:** `1.0.0`  
-**Автор:** `justiceDev1`
 
-**GitHub:** [github.com/justiceDev1/Mirrors](https://github.com/justiceDev1/Mirrors.git)
 
-## О проекте
+𝗠𝗶𝗿𝗿𝗼𝗿𝘀 — небольшая консольная утилита с оформленным интерфейсом на базе Rich. Она позволяет скачивать видео, аудио и превью по ссылкам, показывает прогресс загрузки и выводит понятные сообщения об ошибках.
 
-**MIRRORS** — консольная утилита с интерфейсом на базе Rich. Программа позволяет скачивать видео, аудио и превью по ссылкам, показывает прогресс загрузки и выводит понятные сообщения об ошибках.
+## ✨ Возможности
 
-Программа работает в Windows CMD, Linux-терминале и Termux.
+- скачивание видео в формате MP4
+- скачивание аудио в формате MP3
+- скачивание изображений по прямой ссылке
+- получение превью со страниц, поддерживаемых yt-dlp
+- отображение прогресса и скорости загрузки
+- автоматическое создание папки MirrorsDownloads
+- понятные сообщения об ошибках
+- адаптация интерфейса под размер терминала
 
-## Возможности
+## 📦 Установка
 
-- скачивание видео в формате MP4;
-- скачивание аудио в формате MP3;
-- скачивание изображений по прямой ссылке;
-- получение превью со страниц, поддерживаемых `yt-dlp`;
-- отображение прогресса и скорости загрузки;
-- автоматическое создание папки `MirrorsDownloads`;
-- понятные сообщения об ошибках;
-- адаптация интерфейса под размер терминала.
-
-## Что понадобится
-
-- Python 3.9 или новее;
-- библиотеки `yt-dlp` и `rich`;
-- FFmpeg — для скачивания и преобразования аудио в MP3.
-
-## Установка
-
-Перед установкой убедитесь, что у вас есть **Git** и **Python 3.9 или новее**. Если их нет, скачайте Git с [git-scm.com](https://git-scm.com/downloads), а Python — с [python.org](https://www.python.org/downloads/).
-
-### 1. Скачать проект с GitHub
-
+```python
+Для 𝗪𝗶𝗻𝗱𝗼𝘄𝘀 𝗖𝗠𝗗
 Откройте CMD или терминал и выполните:
+1) winget install --id Git.Git -e --source winget
+2) winget install -e --id Python.Python.3.14 
+3) git clone https://github.com/justiceDev1/Mirrors.git
+4) cd Mirrors
+5) py -m pip install -r requirements.txt
+6) winget install Gyan.FFmpeg
+После установки всего необходимого выполните: python3 Mirrors.py
 
-```bash
-git clone https://github.com/justiceDev1/Mirrors.git
-cd Mirrors
+Для 𝗟𝗶𝗻𝘂𝘅 
+Откройте терминал и выполните:
+1) sudo apt update
+2) sudo apt install python3 python3-pip ffmpeg git
+3) git clone https://github.com/justiceDev1/Mirrors.git
+4) cd Mirrors
+5) python3 -m pip install -r requirements.txt
+После установки всего необходимого выполните: python3 Mirrors.py
+
+Для Termux
+Откройте Termux и выполните:
+1) pkg update
+2) pkg install python ffmpeg
+3) pkg install git
+4) git clone https://github.com/justiceDev1/Mirrors.git
+5) cd Mirrors
+6) pip install -r requirements.txt
+После установки всего необходимого выполните: python3 Mirrors.py
 ```
 
-В Termux перед клонированием проекта установите Git:
+## 🚀 Использование
 
-```bash
-pkg update
-pkg install git
-```
-
-После этого снова выполните команды `git clone` и `cd Mirrors`. Вы окажетесь внутри папки проекта.
-
-
-### 2. Установить зависимости
-
-#### Windows CMD
-
-```cmd
-py -m pip install -r requirements.txt
-winget install Gyan.FFmpeg
-```
-
-Если команда `winget` недоступна, установите FFmpeg вручную или через другой менеджер пакетов.
-
-#### Ubuntu / Debian / Linux
-
-```bash
-sudo apt update
-sudo apt install python3 python3-pip ffmpeg
-python3 -m pip install -r requirements.txt
-```
-
-#### Termux
-
-```bash
-pkg update
-pkg install python ffmpeg
-pip install -r requirements.txt
-```
-
-### 3. Запустить программу
-
-#### Windows
-
-```cmd
-py Mirrors.py
-```
-
-#### Linux и Termux
-
-```bash
-python3 Mirrors.py
-```
-
-После запуска выберите действие:
-
-```text
+```python
+После запуска программы выберите действия:
 [1] Скачать видео
 [2] Скачать аудио
 [3] Скачать фото/превью
 [0] Выйти из программы
 ```
 
-Затем вставьте ссылку и нажмите Enter.
+## 👤 Автор
 
-## Откуда можно скачивать
+**justiceDev1** — [@justiceDev1](https://github.com/justiceDev1)
 
-Видео и аудио скачиваются с сайтов, которые поддерживает библиотека [`yt-dlp`](https://github.com/yt-dlp/yt-dlp/blob/master/supportedsites.md). Полный список поддерживаемых сайтов находится в документации `yt-dlp` и может изменяться.
-
-Для скачивания фото можно использовать прямую ссылку на изображение с расширением `.jpg`, `.jpeg`, `.png`, `.webp` и другими поддерживаемыми форматами. Для превью можно вставить ссылку на страницу, если её поддерживает `yt-dlp`.
-
-Обычные страницы Google, поисковые запросы и неподдерживаемые сайты программа скачать не сможет.
-
-## Куда сохраняются файлы
-
-Все загруженные файлы сохраняются в папку:
-
-```text
-MirrorsDownloads
-```
-
-Папка создаётся автоматически в текущей папке запуска программы.
-
-## Структура проекта
-
-```text
-MIRRORS/
-├── Mirrors.py
-├── requirements.txt
-├── README.md
-└── MirrorsDownloads/
-```
-
-Папка `MirrorsDownloads` появляется после первого запуска и может отсутствовать в репозитории.
-
-## Частые ошибки
-
-**«Ссылка не поддерживается»** — сайт или формат ссылки не поддерживается `yt-dlp`.
-
-**«Для этого действия нужен FFmpeg»** — установите FFmpeg и перезапустите терминал.
-
-**«Не удалось открыть ссылку»** — проверьте интернет-соединение и правильность адреса.
-
-## Автор
-
-**justiceDev1**
-
-## Версия
-
-`1.0.0`
