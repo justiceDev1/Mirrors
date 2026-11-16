@@ -73,14 +73,22 @@ def friendly_error(error):
 
     if "unsupported url" in error_text:
         return "Ссылка не поддерживается."
+    if "requested format is not available" in error_text or "format is not available" in error_text:
+        return "Доступный формат видео не найден."
+    if "sign in" in error_text or "login" in error_text or "authentication" in error_text:
+        return "Для этого видео требуется авторизация."
+    if "private video" in error_text:
+        return "Видео закрыто или доступно только владельцу."
+    if "age-restricted" in error_text:
+        return "Видео имеет возрастное ограничение."
+    if "ffmpeg" in error_text:
+        return "Для объединения видео и аудио нужен FFmpeg."
     if isinstance(error, yt_dlp.utils.DownloadError):
-        return "Не удалось скачать: ссылка недоступна или видео не найдено."
+        return "Не удалось скачать видео. Проверьте ссылку или доступность видео."
     if isinstance(error, urllib.error.HTTPError):
         return "Ссылка недоступна: ошибка сервера."
     if isinstance(error, urllib.error.URLError):
         return "Не удалось открыть ссылку. Проверьте интернет и адрес."
-    if "ffmpeg" in error_text:
-        return "Для этого действия нужен FFmpeg."
 
     return "Не удалось выполнить загрузку. Проверьте ссылку."
 
@@ -135,7 +143,7 @@ header = Panel(
     banner_content,
     box = box.ROUNDED,
     border_style = "#4b6e00",
-    subtitle = "[#afff00]Author - justiceDev1 Version 1.0.0[/#afff00]",
+    subtitle = "[#afff00]EXPERIMENTAL PROGRAM[/#afff00]",
     subtitle_align = "right"
 )
 
@@ -273,7 +281,7 @@ while True:
 
             if choice == "1":  # Скачать Видео (совместимый H.264 MP4)
                 ydl_opts = {
-                    "format": "bv*[vcodec^=avc1]+ba[acodec^=mp4a]/b[ext=mp4]/best",
+                    "format": "bv*[vcodec^=avc1]+ba[acodec^=mp4a]/b[ext=mp4]/bv*+ba/b",
                     "merge_output_format": "mp4",
                     "outtmpl": os.path.join(SAVE_DIR, "%(title)s.%(ext)s"),
                     "concurrent_fragment_downloads": 16,
