@@ -27,7 +27,7 @@
 Откройте CMD или терминал и выполните:
 1) winget install --id Git.Git -e --source winget
 2) winget install -e --id Python.Python.3.14 
-3) git clone https://github.com/justiceDev1/Mirrors.git
+3) git clone https://github.com/justiceDev1/Mirrors
 4) cd Mirrors
 5) py -m pip install -r requirements.txt
 6) winget install Gyan.FFmpeg
@@ -37,7 +37,7 @@
 Откройте терминал и выполните:
 1) sudo apt update
 2) sudo apt install python3 python3-pip ffmpeg git
-3) git clone https://github.com/justiceDev1/Mirrors.git
+3) git clone https://github.com/justiceDev1/Mirrors
 4) cd Mirrors
 5) python3 -m pip install -r requirements.txt
 После установки всего необходимого выполните: python3 Mirrors.py
@@ -47,7 +47,7 @@
 1) pkg update
 2) pkg install python ffmpeg
 3) pkg install git
-4) git clone https://github.com/justiceDev1/Mirrors.git
+4) git clone https://github.com/justiceDev1/Mirrors
 5) cd Mirrors
 6) pip install -r requirements.txt
 После установки всего необходимого выполните: python3 Mirrors.py
