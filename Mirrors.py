@@ -59,7 +59,8 @@ console = Console()
 clear_screen()
 
 #СОЗДАЕМ ПАПКУ
-SAVE_DIR = "MirrorsDownloads"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+SAVE_DIR = os.path.join(BASE_DIR, "MirrorsDownloads" )
 os.makedirs(SAVE_DIR, exist_ok = True)
 
 class QuietLogger:
@@ -246,7 +247,16 @@ while True:
         console.print("\n[bold #afff00]Выход из программы... До встречи![/]")
         break
 
-    url = Prompt.ask("[bold #afff00]MIRRORS >[/] [bold #e2e8f0]Вставьте ссылку[/]").strip()
+    while True:
+        url = Prompt.ask("[bold #afff00]MIRRORS >[/] [bold #e2e8f0]Вставьте ссылку[/]").strip()
+
+        if not url:
+            console.print("[red]Ссылка не должна быть пустой![/]")
+        elif not url.startswith(("https://", "http://")):
+            console.print("[red]Ссылка должна начинаться с https:// или http://")
+        else:
+            break
+
     logs_history.append(f"Запрос ссылки: {url[:28]}...")
     show_screen(status = "Получение данных...", logs = logs_history)
 
@@ -314,7 +324,8 @@ while True:
                     out_file.write(resp.read())
                 live.update(build_panels("Завершено!", 100.0, "Мгновенно", logs_history))
 
-        logs_history.append(f"[bold #afff00]Файл сохранён в {SAVE_DIR}![/]")
+        save_path = os.path.abspath(SAVE_DIR)
+        logs_history.append(f"[bold #afff00]Файл сохранён в {save_path}![/]")
         show_screen(status="Завершено!", percent=100.0, speed="—", logs=logs_history)
 
     except Exception as e:
@@ -324,3 +335,4 @@ while True:
 
    
     console.input("\n[#94a3b8]Нажмите Enter, чтобы продолжить...[/]")
+
